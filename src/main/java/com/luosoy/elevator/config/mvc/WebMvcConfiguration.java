@@ -20,11 +20,6 @@ import java.util.List;
 public class WebMvcConfiguration implements WebMvcConfigurer {
 
     @Override
-    public void configurePathMatch(PathMatchConfigurer configurer) {
-
-    }
-
-    @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new CommonInterceptor()).addPathPatterns("/**");
     }
@@ -32,15 +27,6 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     @Override
     public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> exceptionResolvers) {
         exceptionResolvers.add(new ExceptionResolver());
-    }
-
-    @Bean
-    public ViewResolver getViewResolver(WebMvcProperties webMvcProperties) {
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix(webMvcProperties.getView().getPrefix());
-        resolver.setSuffix(webMvcProperties.getView().getSuffix());
-        resolver.setViewClass(JstlView.class);
-        return resolver;
     }
 
 }

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
+
 @Controller
 @RequestMapping("/test")
 public class TestControllor {
@@ -24,6 +26,7 @@ public class TestControllor {
         TestDTO testDTO = new TestDTO();
         testDTO.setName("12312");
         testDTO.setTest("444");
+        testDTO.setDate(new Date());
         return Response.success(testDTO);
     }
 }

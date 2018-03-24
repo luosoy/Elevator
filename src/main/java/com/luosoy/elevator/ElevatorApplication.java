@@ -11,7 +11,6 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableAspectJAutoProxy
 @ComponentScan(value = {"com.luosoy"})
 @MapperScan(basePackages={"com.luosoy.elevator.mapper"})
-@EnableWebMvc
 public class ElevatorApplication {
 
     public static void main(String[] args) {
