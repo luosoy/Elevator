@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.luosoy.elevator.mapper.ChapterMapper">
+  <resultMap id="BaseResultMap" type="com.luosoy.elevator.model.Chapter">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="xh" jdbcType="VARCHAR" property="xh" />
+    <result column="book_xh" jdbcType="VARCHAR" property="bookXh" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="chapternum" jdbcType="INTEGER" property="chapternum" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="clickcount" jdbcType="INTEGER" property="clickcount" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="yxbz" jdbcType="CHAR" property="yxbz" />
+    <result column="nextxh" jdbcType="VARCHAR" property="nextxh" />
+    <result column="prexh" jdbcType="VARCHAR" property="prexh" />
+    <result column="context" jdbcType="LONGVARCHAR" property="context" />
+  </resultMap>
+</mapper>
