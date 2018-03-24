@@ -9,12 +9,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
-/**
- * 描述: Bean转换工具类
- * 版权: 税友软件集团股份有限公司
- * 日期: 2018/2/1
- * 作者: jsh
- */
+
 public class BeanUtil {
 
 

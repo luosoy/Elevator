@@ -3,12 +3,7 @@ package com.luosoy.common.util;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-/**
- * 描述: 数据计算工具类
- * 版权: 税友软件集团股份有限公司
- * 日期: 2018年3月12日 下午1:20:08
- * 作者: zhouy
- */
+
 public class MathUtil {
 
     private MathUtil() {

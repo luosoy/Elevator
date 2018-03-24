@@ -11,12 +11,7 @@ import java.nio.channels.FileChannel;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-/**
- * 描述:MD5工具类
- * 版权: 税友软件集团股份有限公司
- * 日期: 2018/2/1
- * 作者: jsh
- */
+
 @Slf4j
 public class MD5Util {
 

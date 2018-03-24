@@ -8,12 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * 描述: 日期工具类
- * 版权: 税友软件集团股份有限公司
- * 日期: 2018年3月12日 下午1:19:26
- * 作者: zhouy
- */
+
 @Slf4j
 public class DateUtil {
 
