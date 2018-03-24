@@ -4,21 +4,51 @@
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>[%-5p][%d{yyyy/MM/dd HH:mm:ss.SSS}][%.-32t][sequenceid:%mdc{sequenceid}] %m [%.50logger]%rEx{3}%n
-            </pattern>
+            <pattern>[%-5p][%d{yyyy/MM/dd HH:mm:ss.SSS}][%.-32t][sequenceid:%mdc{sequenceid}] %m [%.50logger]%rEx{3}%n</pattern>
             <charset>UTF-8</charset>
         </encoder>
+    </appender>
+    <appender name="common" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append>
+        <encoder>
+            <pattern>[%-5p][%d{yyyy/MM/dd HH:mm:ss.SSS}][%.-32t][sequenceid:%mdc{sequenceid}] %m [%.50logger]%rEx{3}%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/elevator.common.%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+    <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append>
+        <encoder>
+            <pattern>[%-5p][%d{yyyy/MM/dd HH:mm:ss.SSS}][%.-32t][sequenceid:%mdc{sequenceid}] %m [%.50logger]%rEx{3}%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>error</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/elevator.error.%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
     </appender>
 
 
     <logger name="org.apache.commons.beanutils.converters" level="WARN"/>
     <logger name="org.apache.commons.beanutils.ConvertUtils" level="WARN"/>
-    <logger name="org.apache.cxf.phase.PhaseInterceptorChain" level="WARN"/>
     <logger name="org.springframework" level="WARN"/>
     <logger name="BaseLogAspect" level="INFO"/>
-    <logger name="BusinessLog" level="INFO"/>
 
     <root level="info" name="com.luosoy" additivity="false">
         <appender-ref ref="console"/>
+        <appender-ref ref="common" />
+        <appender-ref ref="error" />
     </root>
 </configuration>
