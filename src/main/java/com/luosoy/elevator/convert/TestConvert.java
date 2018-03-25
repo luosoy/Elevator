@@ -1,7 +1,9 @@
 package com.luosoy.elevator.convert;
 
-import com.luosoy.elevator.dto.Test1DTO;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import com.luosoy.elevator.dto.TestDTO;
+import com.luosoy.elevator.model.Test;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -9,8 +11,10 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface TestConvert {
 
-    List<Test1DTO> testConvert(List<TestDTO> test1List);
+    PageInfo<TestDTO> testCovert(PageInfo<Test> testPage);
 
-    Test1DTO testConvert(TestDTO test1);
+    Test dto2Model(TestDTO testDTO);
+
+    List<TestDTO> model2DTO(List<Test> tests);
 
 }

@@ -9,9 +9,13 @@ import java.util.Date;
 @Data
 public class TestDTO {
 
-    private String test;
+    private String uuid;
+
+    private Integer age;
+
     private String name;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     private Date date;
+
 }

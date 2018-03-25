@@ -1,9 +1,11 @@
 package com.luosoy.elevator.controller;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import com.luosoy.common.web.Response;
 import com.luosoy.elevator.convert.TestConvert;
-import com.luosoy.elevator.dto.Test1DTO;
 import com.luosoy.elevator.dto.TestDTO;
+import com.luosoy.elevator.facade.TestFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,25 +13,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/test")
 public class TestControllor {
 
     @Autowired
-    private TestConvert testConvert;
+    private TestFacade tf;
 
     @RequestMapping(value = "/index")
     public String index(){
         return "index";
     }
 
-    @PostMapping(value = "test")
+    @PostMapping(value = "/test")
     @ResponseBody
-    public Response<Test1DTO> test(@RequestBody TestDTO test){
+    public Response<PageInfo<TestDTO>> test(@RequestBody TestDTO test){
         System.out.println(test);
-        Test1DTO test1DTO = testConvert.testConvert(test);
-        return Response.success(test1DTO);
+        PageInfo<TestDTO> testDTOPageInfo = tf.queryTest(1, 100);
+        return Response.success(testDTOPageInfo);
+    }
+
+    @PostMapping(value = "/savetest")
+    @ResponseBody
+    public Response<String> saveTest(@RequestBody TestDTO testDTO){
+        tf.saveTest(testDTO);
+        return Response.success("保存成功");
+    }
+
+    @PostMapping(value = "/querytest")
+    @ResponseBody
+    public Response<List<TestDTO>> querytest(@RequestBody TestDTO testDTO){
+        List<TestDTO>  testDTOList= tf.querytest(testDTO);
+        return Response.success(testDTOList);
     }
 }

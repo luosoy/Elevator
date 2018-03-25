@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.luosoy.elevator.mapper.TestMapper">
+  <resultMap id="BaseResultMap" type="com.luosoy.elevator.model.Test">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+  </resultMap>
+</mapper>
