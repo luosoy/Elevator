@@ -6,6 +6,7 @@ import com.luosoy.common.web.Response;
 import com.luosoy.elevator.convert.TestConvert;
 import com.luosoy.elevator.dto.TestDTO;
 import com.luosoy.elevator.facade.TestFacade;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,6 +46,20 @@ public class TestControllor {
     @PostMapping(value = "/querytest")
     @ResponseBody
     public Response<List<TestDTO>> querytest(@RequestBody TestDTO testDTO){
+        List<TestDTO>  testDTOList= tf.querytest(testDTO);
+        return Response.success(testDTOList);
+    }
+
+
+    /**
+     * 这个方法需要TOKEN
+     * @param testDTO
+     * @return
+     */
+    @PostMapping(value = "/queryWithToken")
+    @ResponseBody
+    @RequiresAuthentication
+    public Response<List<TestDTO>> queryWithToken(@RequestBody TestDTO testDTO){
         List<TestDTO>  testDTOList= tf.querytest(testDTO);
         return Response.success(testDTOList);
     }
