@@ -18,9 +18,6 @@ public class ExceptionResolver extends AbstractHandlerExceptionResolver {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionResolver.class);
 
-    public static final String SYSTEM_ERROR = "sys.error";
-
-
     @Override
     protected ModelAndView doResolveException(HttpServletRequest request, HttpServletResponse response, Object handler,
                                               Exception ex) {
@@ -41,7 +38,7 @@ public class ExceptionResolver extends AbstractHandlerExceptionResolver {
                         resp = Response.error(bException.getErrorCode());
                     }
                 } else {
-                    resp = Response.error(SYSTEM_ERROR);
+                    resp = Response.error(ex.getMessage());
                 }
                 response.setStatus(HttpStatus.OK.value());
                 JsonUtils.writeValue(response.getWriter(), resp);

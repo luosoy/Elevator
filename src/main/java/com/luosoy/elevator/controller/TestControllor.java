@@ -9,6 +9,7 @@ import com.luosoy.elevator.facade.TestFacade;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,11 +57,10 @@ public class TestControllor {
      * @param testDTO
      * @return
      */
-    @PostMapping(value = "/queryWithToken")
+    @GetMapping(value = "/queryWithToken")
     @ResponseBody
     @RequiresAuthentication
-    public Response<List<TestDTO>> queryWithToken(@RequestBody TestDTO testDTO){
-        List<TestDTO>  testDTOList= tf.querytest(testDTO);
-        return Response.success(testDTOList);
+    public Response<String> queryWithToken(){
+        return Response.success("");
     }
 }
