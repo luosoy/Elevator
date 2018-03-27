@@ -1,4 +1,4 @@
-package com.luosoy.common.log.logback;
+package com.luosoy.common.log;
 
 import org.apache.commons.lang3.StringUtils;
 
