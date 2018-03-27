@@ -21,12 +21,7 @@ import javax.servlet.Filter;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * 描述:
- * 版权: 税友软件集团股份有限公司
- * 日期: 2018/2/5
- * 作者: jsh
- */
+
 @Configuration
 public class ShiroConfig {
 
