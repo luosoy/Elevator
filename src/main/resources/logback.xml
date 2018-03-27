@@ -44,7 +44,7 @@
     <logger name="org.apache.commons.beanutils.converters" level="WARN"/>
     <logger name="org.apache.commons.beanutils.ConvertUtils" level="WARN"/>
     <logger name="org.springframework" level="WARN"/>
-    <logger name="com.luosoy.elevator.mapper" level="DEBUG"/>
+    <logger name="com.luosoy.elevator.mapper" level="INFO"/>
     <logger name="BaseLogAspect" level="INFO"/>
 
     <root level="info" name="com.luosoy" additivity="false">
