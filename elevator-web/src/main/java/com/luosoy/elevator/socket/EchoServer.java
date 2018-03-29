@@ -8,11 +8,12 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.bytes.ByteArrayDecoder;
 import io.netty.handler.codec.bytes.ByteArrayEncoder;
 import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.stream.ChunkedWriteHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -21,12 +22,10 @@ import javax.annotation.PreDestroy;
 import java.nio.charset.Charset;
 
 @Component
-public class NettyServer {
+public class EchoServer {
 
-    private static final Logger logger = LoggerFactory.getLogger(NettyServer.class);
+    private static final Logger logger = LoggerFactory.getLogger(EchoServer.class);
 
-    @Autowired
-    private EchoServerHandler echoServerHandler;
 
     private Channel channel;
     private EventLoopGroup bossGroup;
@@ -34,7 +33,6 @@ public class NettyServer {
 
     @Value("${rpcServer.ioThreadNum}")
     int ioThreadNum;
-    //内核为此套接口排队的最大连接个数，对于给定的监听套接口，内核要维护两个队列，未链接队列和已连接队列大小总和最大值
 
     @Value("${rpcServer.backlog}")
     int backlog;
@@ -57,11 +55,10 @@ public class NettyServer {
                 .childOption(ChannelOption.TCP_NODELAY, true)
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
-                    protected void initChannel(SocketChannel socketChannel) throws Exception {
-                        socketChannel.pipeline()
-                                .addLast(new StringEncoder(Charset.forName("UTF-8")))
-                                .addLast(new ByteArrayEncoder())
-                                .addLast(echoServerHandler); //客户端来接进来的操作
+                    protected void initChannel(SocketChannel ch) throws Exception {
+                        ch.pipeline().addLast(new ByteArrayEncoder(),
+                                new ByteArrayDecoder(),
+                                new EchoServerHandler());
                     }
                 });
         channel = serverBootstrap.bind().sync().channel();

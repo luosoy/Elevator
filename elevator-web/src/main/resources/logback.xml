@@ -47,7 +47,7 @@
     <logger name="com.luosoy.elevator.mapper" level="INFO"/>
     <logger name="BaseLogAspect" level="INFO"/>
 
-    <root level="debug" name="com.luosoy" additivity="false">
+    <root level="info" name="com.luosoy" additivity="false">
         <appender-ref ref="console"/>
         <appender-ref ref="common" />
         <appender-ref ref="error" />

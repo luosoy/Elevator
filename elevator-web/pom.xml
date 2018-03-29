@@ -117,8 +117,6 @@
             <artifactId>ehcache</artifactId>
         </dependency>
 
-
-
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring-boot-web-starter</artifactId>
@@ -148,7 +146,6 @@
             <artifactId>netty-all</artifactId>
             <version>4.1.22.Final</version>
         </dependency>
-
 
         <!--test -->
         <dependency>
