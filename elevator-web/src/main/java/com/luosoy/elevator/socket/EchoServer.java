@@ -14,6 +14,7 @@ import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +27,9 @@ public class EchoServer {
 
     private static final Logger logger = LoggerFactory.getLogger(EchoServer.class);
 
+
+    @Autowired
+    private EchoServerHandler echoServerHandler;
 
     private Channel channel;
     private EventLoopGroup bossGroup;
@@ -56,9 +60,8 @@ public class EchoServer {
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
-                        ch.pipeline().addLast(new ByteArrayEncoder(),
-                                new ByteArrayDecoder(),
-                                new EchoServerHandler());
+                        ch.pipeline().addLast(new ByteArrayEncoder(), new ByteArrayDecoder(),
+                                echoServerHandler);
                     }
                 });
         channel = serverBootstrap.bind().sync().channel();

@@ -8,9 +8,11 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.CharsetUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 
 @ChannelHandler.Sharable
+@Service
 public class EchoServerHandler extends SimpleChannelInboundHandler<byte[]> {
 
     private static final Logger logger = LoggerFactory.getLogger(EchoServerHandler.class);
