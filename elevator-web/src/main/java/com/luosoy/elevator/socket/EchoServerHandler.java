@@ -44,7 +44,6 @@ public class EchoServerHandler extends SimpleChannelInboundHandler<ByteBuf> {
     /**
      *
      * @author Taowd
-     * TODO  此处用来处理收到的数据中含有中文的时  出现乱码的问题
      * 2017年8月31日 下午7:57:28
      * @param buf
      * @return
