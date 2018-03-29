@@ -1,6 +1,5 @@
 package com.luosoy.elevator.socket;
 
-import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandler;
@@ -10,7 +9,6 @@ import io.netty.util.CharsetUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.UnsupportedEncodingException;
 
 @ChannelHandler.Sharable
 public class EchoServerHandler extends SimpleChannelInboundHandler<byte[]> {
